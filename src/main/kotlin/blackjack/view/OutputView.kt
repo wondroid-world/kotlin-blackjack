@@ -63,7 +63,7 @@ class OutputView {
     ) {
         val results: MutableList<String> = mutableListOf()
         dealer.results.map { result ->
-            results.add("${result.value}${result.key.koreanTitle}")
+            results.add("${result.value}${result.key}")
         }
         println(
             "\n${dealer.name}카드: ${
@@ -81,7 +81,7 @@ class OutputView {
         println("\n## 최종 승패")
         println("${dealer.name}: ${results.joinToString(" ")}")
         players.value.forEach { player ->
-            println("${player.name}: ${player.result.koreanTitle}")
+            println("${player.name}: ${player.result}")
         }
     }
 }
