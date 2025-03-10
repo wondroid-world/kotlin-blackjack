@@ -6,9 +6,6 @@ class Cards(
     private val _value: MutableList<Card> = value.toMutableList()
     val value: List<Card> get() = _value.map { card -> card.copy() }
 
-    var size: Int = this.value.size
-        private set
-
     fun add(card: Card) {
         _value.add(card)
     }
@@ -27,7 +24,7 @@ class Cards(
 
     fun getStatus(): CardsStatus {
         val cardsScore = calculateScore()
-        if (this.size == 2 && cardsScore == 21) return CardsStatus.BLACKJACK
+        if (_value.size == 2 && cardsScore == 21) return CardsStatus.BLACKJACK
         if (cardsScore > 21) return CardsStatus.BUST
         return CardsStatus.NONE
     }

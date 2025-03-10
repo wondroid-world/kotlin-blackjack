@@ -33,7 +33,7 @@ class DealerTest {
 
         val expected = 0
 
-        assertThat(dealer.cards.size).isEqualTo(expected)
+        assertThat(dealer.cards.value.size).isEqualTo(expected)
     }
 
     @Test
