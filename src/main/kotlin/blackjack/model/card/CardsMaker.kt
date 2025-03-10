@@ -1,4 +1,4 @@
-package blackjack.model
+package blackjack.model.card
 
 object CardsMaker {
     private val DENOMINATIONS: List<Denomination> = Denomination.entries

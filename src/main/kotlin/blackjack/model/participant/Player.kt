@@ -1,4 +1,7 @@
-package blackjack.model
+package blackjack.model.participant
+
+import blackjack.model.GameResult
+import blackjack.model.card.Cards
 
 class Player(
     name: String,

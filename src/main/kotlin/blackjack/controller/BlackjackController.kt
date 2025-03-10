@@ -1,13 +1,13 @@
 package blackjack.controller
 
-import blackjack.model.CardDeck
-import blackjack.model.CardsMaker
-import blackjack.model.CardsStatus
-import blackjack.model.Dealer
+import blackjack.model.card.CardDeck
+import blackjack.model.card.CardsMaker
+import blackjack.model.card.CardsStatus
+import blackjack.model.participant.Dealer
 import blackjack.model.GameResult
-import blackjack.model.Player
+import blackjack.model.participant.Player
 import blackjack.model.PlayerBehavior
-import blackjack.model.Players
+import blackjack.model.participant.Players
 import blackjack.view.InputView
 import blackjack.view.OutputView
 

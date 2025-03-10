@@ -1,9 +1,9 @@
 package blackjack.view
 
-import blackjack.model.Dealer
-import blackjack.model.Participant
-import blackjack.model.Player
-import blackjack.model.Players
+import blackjack.model.participant.Dealer
+import blackjack.model.participant.Participant
+import blackjack.model.participant.Player
+import blackjack.model.participant.Players
 
 class OutputView {
     fun printStartMessage() {

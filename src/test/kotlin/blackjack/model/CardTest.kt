@@ -1,5 +1,8 @@
 package blackjack.model
 
+import blackjack.model.card.Card
+import blackjack.model.card.CardShape
+import blackjack.model.card.Denomination
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
