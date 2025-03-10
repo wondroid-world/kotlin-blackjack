@@ -142,7 +142,7 @@ class CardsTest {
     }
 
     @Test
-    fun `처음 턴이고, 카드들의 상태가 블랙잭이면 true 값을 반환한다`() {
+    fun `처음 턴이고, 카드들의 합이 21이면 CardsStatus의 BLACKJACK 값을 반환한다`() {
         val cards =
             Cards(
                 listOf(
@@ -150,31 +150,15 @@ class CardsTest {
                     Card(CardShape.CLOVER, Denomination.TEN),
                 ),
             )
-        val actual = cards.isBlackjack(true)
+        val actual = cards.getStatus(true)
 
-        val expected = true
-
-        assertThat(actual).isEqualTo(expected)
-    }
-
-    @Test
-    fun `처음 턴이고, 카드들의 상태가 블랙잭이 아니면 false 값을 반환한다`() {
-        val cards =
-            Cards(
-                listOf(
-                    Card(CardShape.HEART, Denomination.ACE),
-                    Card(CardShape.CLOVER, Denomination.TEN),
-                ),
-            )
-        val actual = cards.isBlackjack(true)
-
-        val expected = true
+        val expected = CardsStatus.BLACKJACK
 
         assertThat(actual).isEqualTo(expected)
     }
 
     @Test
-    fun `카드들의 상태가 버스트이면 true 값을 반환한다`() {
+    fun `첫 턴이 아니고 카드들의 합이 21를 초과하면 CardsStatus의 BUST 값을 반환한다`() {
         val cards =
             Cards(
                 listOf(
@@ -184,15 +168,16 @@ class CardsTest {
                     Card(CardShape.CLOVER, Denomination.TWO),
                 ),
             )
-        val actual = cards.isBust()
+        val actual = cards.getStatus()
 
-        val expected = true
+        val expected = CardsStatus.BUST
 
         assertThat(actual).isEqualTo(expected)
     }
 
+
     @Test
-    fun `카드들의 상태가 버스트가 아니면, false 값을 반환한다`() {
+    fun `첫 턴이 아니고 카드들의 합이 21이하이면 CardsStatus의 NONE 값을 반환한다`() {
         val cards =
             Cards(
                 listOf(
@@ -200,9 +185,9 @@ class CardsTest {
                     Card(CardShape.CLOVER, Denomination.TEN),
                 ),
             )
-        val actual = cards.isBust()
+        val actual = cards.getStatus()
 
-        val expected = false
+    val expected = CardsStatus.NONE
 
         assertThat(actual).isEqualTo(expected)
     }

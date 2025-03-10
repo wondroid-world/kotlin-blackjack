@@ -53,7 +53,7 @@ class BlackjackController(
         players: Players,
         dealer: Dealer,
     ) {
-        if (dealer.isBlackjack(true)) {
+        if (dealer.cards.getStatus(true) == CardsStatus.BLACKJACK) {
             val blackjackPlayers: List<Player> = players.findBlackjackPlayer()
             updateGameResult(players, dealer)
             outputView.printDealerBlackjackMessage(dealer, blackjackPlayers)
@@ -81,7 +81,7 @@ class BlackjackController(
         player: Player,
         dealer: Dealer,
     ): Boolean {
-        if (player.isBlackjack(true)) {
+        if (player.cards.getStatus(true) == CardsStatus.BLACKJACK) {
             player.updateResult(GameResult.PUSH)
             dealer.updateResult(player.cards.calculateScore())
             return true
@@ -104,8 +104,8 @@ class BlackjackController(
         player: Player,
         dealer: Dealer,
     ): Boolean {
-        if (player.isBlackjack(true)) {
-            val dealerResult: GameResult = dealer.updateResult(CardsStatus.BLACKJACK_SCORE)
+        if (player.cards.getStatus(true) == CardsStatus.BLACKJACK) {
+            val dealerResult: GameResult = dealer.updateResult(21)
             player.updateResult(dealerResult)
             return true
         }
@@ -113,7 +113,7 @@ class BlackjackController(
     }
 
     private fun executePlayerGameLogic(player: Player) {
-        while (!player.isBust()) {
+        while (player.cards.getStatus() != CardsStatus.BUST) {
             outputView.printPlayerBehaviorGuide(player)
             val playerBehavior: PlayerBehavior = inputView.readPlayerBehavior()
 
@@ -138,7 +138,7 @@ class BlackjackController(
     }
 
     private fun isPlayerBust(player: Player): Boolean {
-        if (player.isBust()) {
+        if (player.cards.getStatus() == CardsStatus.BUST) {
             outputView.printBust(player)
             return true
         }
@@ -154,7 +154,7 @@ class BlackjackController(
     }
 
     private fun isDealerBust(dealer: Dealer): Boolean {
-        if (dealer.isBust()) {
+        if (dealer.cards.getStatus() == CardsStatus.BUST) {
             outputView.printBust(dealer)
             return true
         }
