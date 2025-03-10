@@ -1,6 +1,7 @@
 package blackjack.view
 
 import blackjack.model.Dealer
+import blackjack.model.Participant
 import blackjack.model.Player
 import blackjack.model.Players
 
@@ -48,7 +49,7 @@ class OutputView {
         )
     }
 
-    fun printBust(player: Player) {
+    fun printBust(player: Participant) {
         println("${player.name}의 점수는 ${player.cards.calculateScore()}점으로 21점을 초과하여 죽었습니다.")
     }
 

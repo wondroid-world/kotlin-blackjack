@@ -1,15 +1,11 @@
 package blackjack.model
 
 class Dealer(
-    private val dealerName: String = "딜러",
-    override val cards: Cards = Cards(mutableListOf()),
-) : Player(dealerName) {
+    name: String = "딜러",
+    cards: Cards = Cards(emptyList()),
+) : Participant(name, cards) {
     private var _results: MutableMap<GameResult, Int> = mutableMapOf()
     val results: Map<GameResult, Int> get() = _results.toMap()
-
-    override fun appendCard(card: Card) {
-        cards.add(card)
-    }
 
     fun isHit(): Boolean {
         val dealerScore = cards.calculateScore()
