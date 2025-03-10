@@ -18,7 +18,7 @@ class Cards(
     fun isBust(): Boolean = CardsStatus.from(calculateScore()) == CardsStatus.BUST
 
     fun calculateScore(): Int {
-        val aceCount: Int = value.count { card -> card.isDenominationAce(card) }
+        val aceCount: Int = value.count { card -> card.isAce() }
         val score: Int = value.sumOf { card -> card.denomination.number }
         return when (aceCount) {
             1 -> if (score < 11) score + 11 else score + 1

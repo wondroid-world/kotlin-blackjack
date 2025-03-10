@@ -16,11 +16,24 @@ class CardTest {
     }
 
     @Test
-    fun `카드의 모양과 끗수를 합쳐서 반환한다`() {
+    fun `카드가 에이스이면 true를 반환한다`() {
+        val card = Card(CardShape.HEART, Denomination.ACE)
+
+        val actual = card.isAce()
+
+        val expected = true
+
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `카드가 에이스가 아니면 false를 반환한다`() {
         val card = Card(CardShape.HEART, Denomination.TWO)
 
-        val actual = card.combine()
+        val actual = card.isAce()
 
-        assertThat(actual).isEqualTo("2하트")
+        val expected = false
+
+        assertThat(actual).isEqualTo(expected)
     }
 }
