@@ -3,7 +3,7 @@ package blackjack.model.card
 enum class Denomination(
     val number: Int,
 ) {
-    ACE(0),
+    ACE(1),
     TWO(2),
     THREE(3),
     FOUR(4),
