@@ -15,7 +15,13 @@ class OutputView {
     ) {
         val playersNames: String = players.joinToString(", ") { it.name }
         println("\n${dealer.name}와 ${playersNames}에게 2장의 카드를 나누었습니다.")
-        println("${dealer.name}: ${dealer.cards.getCardsInfomation()[0]}")
+        println(
+            "${dealer.name}: ${
+                dealer.cards.value
+                    .map { it.shape.toString() + it.denomination }
+                    .joinToString(", ")
+            }",
+        )
         players.forEach { player ->
             printPlayerCard(player)
         }
@@ -35,7 +41,11 @@ class OutputView {
     }
 
     fun printPlayerCard(player: Player) {
-        println("${player.name}카드: ${player.cards.getCardsInfomation().joinToString(", ")}")
+        println(
+            "${player.name}카드: ${
+                player.cards.value.map { it.shape.toString() + it.denomination }.joinToString(", ")
+            }",
+        )
     }
 
     fun printBust(player: Player) {
@@ -56,13 +66,13 @@ class OutputView {
         }
         println(
             "\n${dealer.name}카드: ${
-                dealer.cards.getCardsInfomation().joinToString(", ")
+                dealer.cards.value.map { it.shape.toString() + it.denomination }.joinToString(", ")
             } - 결과: ${dealer.cards.calculateScore()}",
         )
         players.value.forEach { player ->
             println(
                 "${player.name}카드: ${
-                    player.cards.getCardsInfomation().joinToString(", ")
+                    player.cards.value.map { it.shape.toString() + it.denomination }.joinToString(", ")
                 } - 결과: ${player.cards.calculateScore()}",
             )
         }
