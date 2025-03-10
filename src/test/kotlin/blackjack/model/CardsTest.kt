@@ -150,7 +150,7 @@ class CardsTest {
                     Card(CardShape.CLOVER, Denomination.TEN),
                 ),
             )
-        val actual = cards.getStatus(true)
+        val actual = cards.getStatus()
 
         val expected = CardsStatus.BLACKJACK
 

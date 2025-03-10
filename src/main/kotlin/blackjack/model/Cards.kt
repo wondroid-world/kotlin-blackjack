@@ -25,9 +25,9 @@ class Cards(
         }
     }
 
-    fun getStatus(firstTurn: Boolean = false): CardsStatus {
+    fun getStatus(): CardsStatus {
         val cardsScore = calculateScore()
-        if (firstTurn && cardsScore == 21) return CardsStatus.BLACKJACK
+        if (this.size == 2 && cardsScore == 21) return CardsStatus.BLACKJACK
         if (cardsScore > 21) return CardsStatus.BUST
         return CardsStatus.NONE
     }
