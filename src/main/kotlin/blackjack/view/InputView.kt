@@ -15,6 +15,10 @@ class InputView {
 
     fun readPlayerBehavior(): PlayerBehavior {
         val behavior = readln().trim().uppercase()
-        return PlayerBehavior.from(behavior)
+        return when (behavior) {
+            "Y" -> PlayerBehavior.HIT
+            "N" -> PlayerBehavior.STAY
+            else -> throw IllegalArgumentException()
+        }
     }
 }
