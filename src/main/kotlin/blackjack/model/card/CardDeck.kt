@@ -1,18 +1,16 @@
 package blackjack.model.card
 
-object CardDeck {
+class CardDeck private constructor(
+    private val trumpCard: List<Card>,
+) {
     private var index = 0
 
-    private val DENOMINATIONS: List<Denomination> = Denomination.entries
-    private val SHAPES: List<CardShape> = CardShape.entries
+    fun pickCard(): Card = trumpCard[index++]
 
-    private val CARDS: List<Card> =
-        DENOMINATIONS
-            .flatMap { denomination ->
-                SHAPES.map { shape ->
-                    Card(shape, denomination)
-                }
-            }.shuffled()
-
-    fun pickCard(): Card = CARDS[index++]
+    companion object {
+        fun create(): CardDeck {
+            val shuffledTrumpCard = TrumpCard.CARDS.shuffled()
+            return CardDeck(shuffledTrumpCard)
+        }
+    }
 }
