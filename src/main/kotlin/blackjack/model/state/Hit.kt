@@ -4,12 +4,30 @@ import blackjack.model.card.Card
 import blackjack.model.card.Hand
 
 class Hit(
-    private val hand: Hand,
-) {
+    override val hand: Hand,
+) : State(hand) {
     val size: Int get() = hand.size
 
-    fun draw(card: Card) {
+    fun draw(card: Card): State {
         val newHand = hand + card
-//        return Hit(newHand)
+        val score = newHand.score()
+        return when {
+            score < 21 -> Hit(newHand)
+            newHand.size == 2 && score == 21 -> Blackjack(newHand)
+            score > 21 -> Bust(newHand)
+            else -> Stay(newHand)
+        }
     }
 }
+
+class Stay(
+    override val hand: Hand,
+) : State(hand)
+
+class Blackjack(
+    override val hand: Hand,
+) : State(hand)
+
+class Bust(
+    override val hand: Hand,
+) : State(hand)
