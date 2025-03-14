@@ -1,11 +1,8 @@
 package blackjack.model.participant
 
-import blackjack.model.card.HandCards
-
 class Player(
     name: String,
-    handCards: HandCards = HandCards(mutableListOf()),
-) : Participant(name, handCards) {
+) : Participant(name) {
     init {
         require(name != "딜러") { "플레이어는 딜러라는 이름을 가질 수 없습니다." }
         require(name.length in 1..5) { "플레이어는 1에서 5사이 길이의 이름만 가질 수 있습니다." }
