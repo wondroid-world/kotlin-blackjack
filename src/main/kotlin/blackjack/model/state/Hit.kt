@@ -5,7 +5,7 @@ import blackjack.model.card.Hand
 
 class Hit(
     override val hand: Hand,
-) : State(hand) {
+) : State {
     val size: Int get() = hand.size
 
     override fun draw(card: Card): State {

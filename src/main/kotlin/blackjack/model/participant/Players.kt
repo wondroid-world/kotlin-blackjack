@@ -8,6 +8,6 @@ class Players(
     }
 
     companion object {
-        fun from(vararg names: String): Players = Players(names.map { name -> Player(name) })
+        fun from(vararg names: String): Players = Players(names.map { name -> Player(name = name) })
     }
 }

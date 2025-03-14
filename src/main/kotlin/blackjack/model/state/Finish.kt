@@ -6,7 +6,7 @@ import blackjack.model.card.Hand
 
 abstract class Finish(
     override val hand: Hand,
-) : State(hand) {
+) : State {
     abstract val profitRate: Float
 
     fun profit(money: Money): Money = money * profitRate
