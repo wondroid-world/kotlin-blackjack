@@ -8,7 +8,7 @@ class Hit(
 ) : State(hand) {
     val size: Int get() = hand.size
 
-    fun draw(card: Card): State {
+    override fun draw(card: Card): State {
         val newHand = hand + card
         val score = newHand.score()
         return when {

@@ -1,5 +1,6 @@
 package blackjack.model.state
 
+import blackjack.model.card.Card
 import blackjack.model.card.Hand
 
 abstract class Finish(
@@ -7,5 +8,5 @@ abstract class Finish(
 ) : State(hand) {
     abstract val profitRate: Float
 
-    fun draw(): Unit = throw IllegalStateException("카드를 추가 할 수 없습니다.")
+    override fun draw(card: Card) = throw IllegalStateException("카드를 추가 할 수 없습니다.")
 }
