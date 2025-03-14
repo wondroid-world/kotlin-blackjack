@@ -1,5 +1,6 @@
 package blackjack.model.card
 
+import blackjack.model.state.StartGame
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -10,38 +11,10 @@ class StartGameTest {
         val startGame = StartGame()
         val hit = startGame.draw(card)
 
-        val actual = hit.hand.cards
+        val actual = hit.size
 
         val expected = 1
 
-        assertThat(actual).hasSize(expected)
+        assertThat(actual).isEqualTo(expected)
     }
-}
-
-class StartGame(
-    val hand: Hand = Hand(emptyList()),
-) {
-    fun draw(card: Card): Hit {
-        val newHand = hand + card
-        return Hit(newHand)
-    }
-}
-
-class Hand(
-    val cards: List<Card>
-) {
-    val size get() = cards.size
-
-    operator fun plus(card: Card): Hand = Hand(this.cards + card)
-}
-
-class Hit(
-    val hand: Hand,
-) {
-    fun draw(card: Card) {
-        val newHand = hand + card
-//        return Hit(newHand)
-    }
-
-
 }
