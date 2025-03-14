@@ -20,14 +20,10 @@ class Hit(
     }
 }
 
-class Stay(
-    override val hand: Hand,
-) : State(hand)
 
-class Blackjack(
-    override val hand: Hand,
-) : State(hand)
 
-class Bust(
-    override val hand: Hand,
-) : State(hand)
+
+
+
+
+
