@@ -18,12 +18,12 @@ class Hit(
             else -> Stay(newHand)
         }
     }
+
+    fun stop(): State {
+        val score = hand.score()
+        return when {
+            score > 21 -> Bust(hand)
+            else -> Stay(hand)
+        }
+    }
 }
-
-
-
-
-
-
-
-
