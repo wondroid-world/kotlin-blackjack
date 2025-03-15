@@ -12,14 +12,14 @@ import org.junit.jupiter.params.provider.CsvSource
 
 class BustTest {
     @ParameterizedTest
-    @CsvSource(value = ["1000, 0"])
+    @CsvSource(value = ["1000, -1000"])
     fun `버스트일때 금액을 넣으면 배팅금 0원을 반환한다`(
         bettingAmount: Money,
         expected: Money,
     ) {
         val hand =
             Hand(
-                Card(CardShape.HEART, Denomination.ACE),
+                Card(CardShape.HEART, Denomination.TWO),
                 Card(CardShape.SPADE, Denomination.TEN),
                 Card(CardShape.DIAMOND, Denomination.TEN),
             )
