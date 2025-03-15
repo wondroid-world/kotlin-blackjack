@@ -6,4 +6,6 @@ import blackjack.model.state.State
 class Dealer(
     name: String = "딜러",
     state: State = StartGame(),
-) : Participant(name, state)
+) : Participant(name, state) {
+    fun isCanHit(): Boolean = state.hand.score() <= 16
+}

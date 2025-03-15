@@ -3,8 +3,9 @@ package blackjack.model.participant
 import blackjack.model.card.Card
 import blackjack.model.card.CardShape
 import blackjack.model.card.Denomination
+import blackjack.model.card.Hand
+import blackjack.model.state.Hit
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.Test
 
 class DealerTest {
@@ -15,5 +16,31 @@ class DealerTest {
         val expected = "딜러"
 
         assertThat(dealer.name).isEqualTo(expected)
+    }
+
+    @Test
+    fun `딜러는 점수가 16이하면 true를 반환한다`() {
+        val hand = Hand(Card(CardShape.HEART, Denomination.TWO), Card(CardShape.HEART, Denomination.TEN))
+        val hit = Hit(hand)
+        val dealer = Dealer(state = hit)
+
+        val actual = dealer.isCanHit()
+
+        val expected = true
+
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `딜러는 점수가 16초과면 false를 반환한다`() {
+        val hand = Hand(Card(CardShape.HEART, Denomination.NINE), Card(CardShape.HEART, Denomination.TEN))
+        val hit = Hit(hand)
+        val dealer = Dealer(state = hit)
+
+        val actual = dealer.isCanHit()
+
+        val expected = false
+
+        assertThat(actual).isEqualTo(expected)
     }
 }
