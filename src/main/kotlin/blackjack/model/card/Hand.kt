@@ -1,7 +1,7 @@
 package blackjack.model.card
 
 class Hand(
-    private val cards: List<Card>,
+    val cards: List<Card>,
 ) {
     constructor(vararg cards: Card) : this(cards.toList())
 
