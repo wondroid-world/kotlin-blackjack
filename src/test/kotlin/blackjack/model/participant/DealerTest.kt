@@ -5,6 +5,8 @@ import blackjack.model.card.CardShape
 import blackjack.model.card.Denomination
 import blackjack.model.card.Hand
 import blackjack.model.state.Hit
+import blackjack.model.state.Stay
+import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -42,5 +44,28 @@ class DealerTest {
         val expected = false
 
         assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `상태를 업데이트 할수 있다`() {
+        val dealer = Dealer()
+        val card = Card(CardShape.HEART, Denomination.NINE)
+        dealer.updateState(card)
+
+        val actual = dealer.state
+
+        assertThat(actual).isInstanceOf(Hit::class.java)
+    }
+
+    @Test
+    fun `상태를 Finish로 업데이트 할수 있다`() {
+        val dealer = Dealer()
+        val card = Card(CardShape.HEART, Denomination.NINE)
+        dealer.updateState(card)
+        dealer.stop()
+
+        val actual = dealer.state
+
+        assertThat(actual).isInstanceOf(Stay::class.java)
     }
 }
