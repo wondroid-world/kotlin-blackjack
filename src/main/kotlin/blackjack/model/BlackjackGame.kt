@@ -1,5 +1,6 @@
 package blackjack.model
 
+import blackjack.constants.BlackjackRule.FIRST_CARD_COUNT
 import blackjack.model.card.CardDeck
 import blackjack.model.participant.Dealer
 import blackjack.model.participant.Player
@@ -12,7 +13,7 @@ class BlackjackGame(
     private val cardDeck = CardDeck.create()
 
     fun firstTurn() {
-        repeat(2) {
+        repeat(FIRST_CARD_COUNT) {
             giveCard()
         }
     }

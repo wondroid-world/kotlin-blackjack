@@ -1,5 +1,7 @@
 package blackjack.model.state
 
+import blackjack.constants.BlackjackRule.BLACKJACK_SCORE
+import blackjack.constants.BlackjackRule.FIRST_CARD_COUNT
 import blackjack.model.card.Card
 import blackjack.model.card.Hand
 
@@ -12,9 +14,9 @@ class Hit(
         val newHand = hand + card
         val score = newHand.score()
         return when {
-            score < 21 -> Hit(newHand)
-            newHand.size == 2 && score == 21 -> Blackjack(newHand)
-            score > 21 -> Bust(newHand)
+            score < BLACKJACK_SCORE -> Hit(newHand)
+            newHand.size == FIRST_CARD_COUNT && score == BLACKJACK_SCORE -> Blackjack(newHand)
+            score > BLACKJACK_SCORE -> Bust(newHand)
             else -> Stay(newHand)
         }
     }
@@ -22,7 +24,7 @@ class Hit(
     fun stop(): State {
         val score = hand.score()
         return when {
-            score > 21 -> Bust(hand)
+            score > BLACKJACK_SCORE -> Bust(hand)
             else -> Stay(hand)
         }
     }
