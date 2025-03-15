@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource
 class DenominationTest {
     @ParameterizedTest
     @ValueSource(strings = ["JACK", "QUEEN", "KING"])
-    fun `끗수가 J,Q,K일 경우 숫자가 10이다`(denomination: Denomination) {
+    fun `끗수가 {0}일 경우 숫자가 10이다`(denomination: Denomination) {
         assertThat(denomination.number).isEqualTo(10)
     }
 
