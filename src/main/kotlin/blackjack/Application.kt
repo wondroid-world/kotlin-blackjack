@@ -7,4 +7,3 @@ fun main() {
     val blackjackController = BlackjackController(BlackjackView())
     blackjackController.run()
 }
-
