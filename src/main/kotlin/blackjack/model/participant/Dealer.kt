@@ -1,0 +1,24 @@
+package blackjack.model.participant
+
+import blackjack.model.GameResult
+import blackjack.model.card.Cards
+
+class Dealer(
+    name: String = "딜러",
+    cards: Cards = Cards(emptyList()),
+) : Participant(name, cards) {
+    private var _results: MutableMap<GameResult, Int> = mutableMapOf()
+    val results: Map<GameResult, Int> get() = _results.toMap()
+
+    fun isHit(): Boolean {
+        val dealerScore = cards.calculateScore()
+        return dealerScore <= 16
+    }
+
+    fun updateResult(playerScore: Int): GameResult {
+        val dealerScore: Int = cards.calculateScore()
+        val result: GameResult = GameResult.of(dealerScore, playerScore)
+        _results[result] = _results.getOrDefault(result, 0) + 1
+        return result
+    }
+}
