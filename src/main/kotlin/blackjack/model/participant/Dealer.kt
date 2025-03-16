@@ -8,5 +8,5 @@ class Dealer(
     name: String = "딜러",
     state: State = StartGame(),
 ) : Participant(name, state) {
-    fun isCanHit(): Boolean = state.hand.score() <= DEALER_HIT_SCORE
+    fun canDraw(): Boolean = state.hand.score() <= DEALER_HIT_SCORE
 }

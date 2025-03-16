@@ -26,7 +26,7 @@ class BlackjackGame(
     }
 
     fun dealerTurn(): Boolean {
-        while (dealer.isCanHit()) {
+        while (dealer.canDraw()) {
             dealer.updateState(cardDeck.pickCard())
             return true
         }

@@ -26,7 +26,7 @@ class DealerTest {
         val hit = Hit(hand)
         val dealer = Dealer(state = hit)
 
-        val actual = dealer.isCanHit()
+        val actual = dealer.canDraw()
 
         val expected = true
 
@@ -39,7 +39,7 @@ class DealerTest {
         val hit = Hit(hand)
         val dealer = Dealer(state = hit)
 
-        val actual = dealer.isCanHit()
+        val actual = dealer.canDraw()
 
         val expected = false
 
