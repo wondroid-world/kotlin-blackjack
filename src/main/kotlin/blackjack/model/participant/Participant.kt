@@ -7,17 +7,18 @@ import blackjack.model.state.State
 
 abstract class Participant(
     val name: String,
-    private var _state: State = StartGame(),
+    state: State = StartGame(),
 ) {
-    val state: State get() = _state
+    var state: State = state
+        private set
 
     fun updateState(card: Card) {
-        _state = _state.draw(card)
+        state = state.draw(card)
     }
 
     fun stop() {
-        if (_state is Hit) {
-            _state = (_state as Hit).stop()
+        if (state is Hit) {
+            state = (state as Hit).stop()
         }
     }
 }
