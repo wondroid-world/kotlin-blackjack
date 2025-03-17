@@ -2,7 +2,9 @@ package blackjack.controller
 
 import blackjack.model.BettingTable
 import blackjack.model.BlackjackGame
-import blackjack.model.participant.*
+import blackjack.model.PlayerBehavior
+import blackjack.model.participant.Dealer
+import blackjack.model.participant.Players
 import blackjack.model.state.Finish
 import blackjack.view.BlackjackView
 
@@ -36,7 +38,7 @@ class BlackjackController(
         players.value.forEach { player ->
             while (player.state !is Finish) {
                 val playerBehavior = blackjackView.getPlayerBehavior(player)
-                blackjackGame.hitOrStay(player, playerBehavior)
+                if (playerBehavior == PlayerBehavior.HIT) blackjackGame.playerTurn(player)
             }
             blackjackView.showHands(player)
         }

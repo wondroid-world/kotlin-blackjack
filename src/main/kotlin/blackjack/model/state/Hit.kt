@@ -6,8 +6,6 @@ import blackjack.model.card.Hand
 class Hit(
     override val hand: Hand,
 ) : State {
-    val size: Int get() = hand.size
-
     override fun draw(card: Card): State {
         val newHand = hand + card
         val score = newHand.score()
@@ -19,13 +17,7 @@ class Hit(
         }
     }
 
-    fun stop(): State {
-        val score = hand.score()
-        return when {
-            score > BLACKJACK_SCORE -> Bust(hand)
-            else -> Stay(hand)
-        }
-    }
+    override fun stop(): State = Stay(hand)
 
     companion object {
         const val FIRST_CARD_COUNT = 2

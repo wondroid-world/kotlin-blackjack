@@ -32,14 +32,8 @@ class BlackjackGame(
         return false
     }
 
-    fun hitOrStay(
-        player: Player,
-        playerBehavior: PlayerBehavior,
-    ) {
-        when (playerBehavior) {
-            PlayerBehavior.HIT -> player.updateState(cardDeck.pickCard())
-            PlayerBehavior.STAY -> player.stop()
-        }
+    fun playerTurn(player: Player) {
+        player.updateState(cardDeck.pickCard())
     }
 
     companion object {

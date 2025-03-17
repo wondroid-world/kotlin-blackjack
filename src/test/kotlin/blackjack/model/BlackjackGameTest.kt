@@ -3,6 +3,7 @@ package blackjack.model
 import blackjack.model.participant.Dealer
 import blackjack.model.participant.Player
 import blackjack.model.participant.Players
+import blackjack.model.state.Hit
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -33,7 +34,7 @@ class BlackjackGameTest {
     }
 
     @Test
-    fun `hitOrStay가 플레이어 상태를 업데이트한다`() {
+    fun `playerTurn가 플레이어 상태를 업데이트한다`() {
         val dealer = Dealer()
         val player = Player("모찌")
         val players = Players(listOf(player))
@@ -41,14 +42,14 @@ class BlackjackGameTest {
 
         val initialHandSize = player.state.hand.size
 
-        game.hitOrStay(player, PlayerBehavior.HIT)
+        game.playerTurn(player)
         val handSizeAfterHit = player.state.hand.size
 
         assertThat(handSizeAfterHit).isEqualTo(initialHandSize + 1)
 
-        game.hitOrStay(player, PlayerBehavior.STAY)
+        game.playerTurn(player)
         val stateAfterStop = player.state
 
-        assertThat(stateAfterStop).isInstanceOf(blackjack.model.state.Finish::class.java)
+        assertThat(stateAfterStop).isInstanceOf(Hit::class.java)
     }
 }

@@ -10,4 +10,6 @@ class StartGame(
         val newHand = hand + card
         return Hit(newHand)
     }
+
+    override fun stop(): State = Stay(hand)
 }

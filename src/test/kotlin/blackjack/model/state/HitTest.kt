@@ -53,21 +53,7 @@ class HitTest {
     }
 
     @Test
-    fun `카드를 추가 하지 않고 점수가 21점초과하면 Bust를 반환한다`() {
-        val hand =
-            Hand(
-                Card(CardShape.HEART, Denomination.TEN),
-                Card(CardShape.SPADE, Denomination.TEN),
-                Card(CardShape.HEART, Denomination.EIGHT),
-            )
-
-        val actual = Hit(hand).stop()
-
-        Assertions.assertThat(actual).isInstanceOf(Bust::class.java)
-    }
-
-    @Test
-    fun `카드를 추가 하지 않고 점수가 21이하점이면 Stay을 반환한다`() {
+    fun `카드를 추가 하지 않으면 Stay을 반환한다`() {
         val hand = Hand(Card(CardShape.HEART, Denomination.ACE), Card(CardShape.SPADE, Denomination.TWO))
 
         val actual = Hit(hand).stop()
