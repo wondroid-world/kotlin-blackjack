@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource
 class BustTest {
     @ParameterizedTest
     @CsvSource(value = ["1000, -1000"])
-    fun `버스트일때 금액을 넣으면 배팅금 0원을 반환한다`(
+    fun `버스트일때 금액을 넣으면 배팅금 -1000원을 반환한다`(
         bettingAmount: Money,
         expected: Money,
     ) {
