@@ -1,7 +1,6 @@
 package blackjack.model
 
 import blackjack.model.participant.Participant
-import blackjack.model.state.Finish
 
 class BettingTable(
     val participant: Participant,
@@ -9,11 +8,6 @@ class BettingTable(
 ) {
     fun getProfit(): Money {
         val participantState = participant.state
-
-        if (participantState !is Finish) {
-            throw IllegalStateException(ERROR_MESSAGE_PARTICIPANT_STATE_NOT_END)
-        }
-
         return participantState.profit(bettingAmount)
     }
 

@@ -9,7 +9,7 @@ abstract class Finish(
 ) : State {
     abstract val profitRate: Float
 
-    fun profit(money: Money): Money = money * profitRate
+    override fun profit(money: Money): Money = money * profitRate
 
     override fun draw(card: Card) = throw IllegalStateException("카드를 추가 할 수 없습니다.")
 
