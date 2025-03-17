@@ -9,5 +9,3 @@ class Stay(
     override val profitRate: Float
         get() = STAY_PROFIT
 }
-
-

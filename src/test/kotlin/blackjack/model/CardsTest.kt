@@ -176,7 +176,6 @@ class CardsTest {
         assertThat(actual).isEqualTo(expected)
     }
 
-
     @Test
     fun `첫 턴이 아니고 카드들의 합이 21이하이면 CardsStatus의 NONE 값을 반환한다`() {
         val cards =
@@ -188,7 +187,7 @@ class CardsTest {
             )
         val actual = cards.getStatus()
 
-    val expected = CardsStatus.NONE
+        val expected = CardsStatus.NONE
 
         assertThat(actual).isEqualTo(expected)
     }

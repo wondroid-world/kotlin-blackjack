@@ -3,8 +3,6 @@ package blackjack.model.participant
 import blackjack.model.card.Card
 import blackjack.model.card.CardShape
 import blackjack.model.card.Denomination
-import blackjack.model.card.Hand
-import blackjack.model.state.Finish
 import blackjack.model.state.Hit
 import blackjack.model.state.Stay
 import org.assertj.core.api.Assertions

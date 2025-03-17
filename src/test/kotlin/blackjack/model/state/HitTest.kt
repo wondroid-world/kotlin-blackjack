@@ -54,7 +54,12 @@ class HitTest {
 
     @Test
     fun `카드를 추가 하지 않고 점수가 21점초과하면 Bust를 반환한다`() {
-        val hand = Hand(Card(CardShape.HEART, Denomination.TEN), Card(CardShape.SPADE, Denomination.TEN),Card(CardShape.HEART, Denomination.EIGHT))
+        val hand =
+            Hand(
+                Card(CardShape.HEART, Denomination.TEN),
+                Card(CardShape.SPADE, Denomination.TEN),
+                Card(CardShape.HEART, Denomination.EIGHT),
+            )
 
         val actual = Hit(hand).stop()
 

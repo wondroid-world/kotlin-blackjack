@@ -6,7 +6,6 @@ import blackjack.model.card.Denomination
 import blackjack.model.card.Hand
 import blackjack.model.state.Hit
 import blackjack.model.state.Stay
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
