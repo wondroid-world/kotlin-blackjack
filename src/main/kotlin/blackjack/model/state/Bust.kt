@@ -8,6 +8,8 @@ class Bust(
     override val profitRate: Float
         get() = BUST_PROFIT
 
+    override fun profit(): Float = profitRate
+
     companion object {
         const val BUST_PROFIT = -1f
     }

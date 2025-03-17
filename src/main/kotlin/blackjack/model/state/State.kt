@@ -9,6 +9,8 @@ interface State {
 
     fun profit(money: Money): Money
 
+    fun profit(): Float
+
     fun draw(card: Card): State
 
     fun stop(): State

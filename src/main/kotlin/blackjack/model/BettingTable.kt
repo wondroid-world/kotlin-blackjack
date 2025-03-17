@@ -10,4 +10,6 @@ class BettingTable(
         val participantState = participant.state
         return participantState.profit(bettingAmount)
     }
+
+    fun getProfit(profitRate: Float): Money = bettingAmount * profitRate
 }

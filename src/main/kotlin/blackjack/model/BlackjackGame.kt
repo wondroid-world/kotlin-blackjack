@@ -27,6 +27,7 @@ class BlackjackGame(
             dealer.receiveCard(cardDeck.pickCard())
             return true
         }
+        dealer.stop()
         return false
     }
 

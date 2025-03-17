@@ -76,14 +76,19 @@ class BlackjackView {
     fun showBettingResult(
         dealer: Dealer,
         bettingTables: List<BettingTable>,
+        profitRates: List<Float>,
     ) {
         println("\n## 최종 수익")
         var dealerProfitAmount = 0
-        bettingTables.forEach { bettingTable -> dealerProfitAmount -= bettingTable.getProfit().value }
+        bettingTables.zip(profitRates).forEach { (bettingTable, profitRate) ->
+            val profit = bettingTable.getProfit(profitRate).value
+            dealerProfitAmount -= profit // 딜러는 상대방의 이익만큼 손해
+        }
         println("${dealer.name}: $dealerProfitAmount")
-        bettingTables.forEach { bettingTable ->
+        bettingTables.zip(profitRates).forEach { (bettingTable, profitRate) ->
             val participant = bettingTable.participant
-            println("${participant.name}: ${bettingTable.getProfit().value}")
+            val profit = bettingTable.getProfit(profitRate).value
+            println("${participant.name}: $profit")
         }
     }
 
