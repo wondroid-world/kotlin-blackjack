@@ -28,4 +28,9 @@ class Hit(
             else -> Stay(hand)
         }
     }
+
+    companion object {
+        const val FIRST_CARD_COUNT = 2
+        const val BLACKJACK_SCORE = 21
+    }
 }

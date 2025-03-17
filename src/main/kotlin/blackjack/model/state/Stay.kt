@@ -8,4 +8,8 @@ class Stay(
 ) : Finish(hand) {
     override val profitRate: Float
         get() = STAY_PROFIT
+
+    companion object {
+        const val STAY_PROFIT = 1f
+    }
 }

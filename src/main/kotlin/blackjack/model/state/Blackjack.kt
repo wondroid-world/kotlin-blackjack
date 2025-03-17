@@ -8,4 +8,8 @@ class Blackjack(
 ) : Finish(hand) {
     override val profitRate: Float
         get() = BLACKJACK_PROFIT
+
+    companion object {
+        const val BLACKJACK_PROFIT = 1.5f
+    }
 }

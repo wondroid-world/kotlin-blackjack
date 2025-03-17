@@ -1,6 +1,5 @@
 package blackjack.model
 
-import blackjack.constants.BlackjackRule.FIRST_CARD_COUNT
 import blackjack.model.card.CardDeck
 import blackjack.model.participant.Dealer
 import blackjack.model.participant.Player
@@ -41,5 +40,9 @@ class BlackjackGame(
             PlayerBehavior.HIT -> player.updateState(cardDeck.pickCard())
             PlayerBehavior.STAY -> player.stop()
         }
+    }
+
+    companion object {
+        const val FIRST_CARD_COUNT = 2
     }
 }
