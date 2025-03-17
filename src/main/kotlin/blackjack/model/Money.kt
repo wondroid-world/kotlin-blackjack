@@ -4,5 +4,7 @@ package blackjack.model
 value class Money(
     val value: Int,
 ) {
-    operator fun times(profitRate: Float): Money = Money((this.value * profitRate).toInt())
+    operator fun times(floatNumber: Float): Money = Money((this.value * floatNumber).toInt())
+
+    operator fun times(intNumber: Int): Money = Money(this.value * intNumber)
 }
