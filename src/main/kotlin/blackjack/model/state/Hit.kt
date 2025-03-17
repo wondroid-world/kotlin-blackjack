@@ -1,7 +1,5 @@
 package blackjack.model.state
 
-import blackjack.constants.BlackjackRule.BLACKJACK_SCORE
-import blackjack.constants.BlackjackRule.FIRST_CARD_COUNT
 import blackjack.model.card.Card
 import blackjack.model.card.Hand
 

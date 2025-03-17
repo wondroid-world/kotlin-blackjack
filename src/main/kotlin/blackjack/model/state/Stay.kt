@@ -1,6 +1,5 @@
 package blackjack.model.state
 
-import blackjack.constants.BlackjackRule.STAY_PROFIT
 import blackjack.model.card.Hand
 
 class Stay(

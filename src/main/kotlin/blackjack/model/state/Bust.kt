@@ -1,6 +1,5 @@
 package blackjack.model.state
 
-import blackjack.constants.BlackjackRule.BUST_PROFIT
 import blackjack.model.card.Hand
 
 class Bust(
