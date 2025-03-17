@@ -1,10 +1,18 @@
 package blackjack.model.participant
 
+import blackjack.model.card.CardDeck
+
 class Players(
     val value: List<Player>,
 ) {
     init {
         require(value.size in MIN_PLAYERS..MAX_PLAYERS) { ERROR_MESSAGE_NUMBER_OF_PEOPLE }
+    }
+
+    fun giveCardForPlayer(cardDeck: CardDeck) {
+        value.forEach { player ->
+            player.updateState(cardDeck.pickCard())
+        }
     }
 
     companion object {

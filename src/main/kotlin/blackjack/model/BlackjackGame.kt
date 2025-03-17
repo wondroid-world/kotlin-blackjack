@@ -13,15 +13,13 @@ class BlackjackGame(
 
     fun firstTurn() {
         repeat(FIRST_CARD_COUNT) {
-            giveCard()
+            giveCard(cardDeck)
         }
     }
 
-    private fun giveCard() {
+    private fun giveCard(cardDeck: CardDeck) {
         dealer.updateState(cardDeck.pickCard())
-        players.value.forEach { player ->
-            player.updateState(cardDeck.pickCard())
-        }
+        players.giveCardForPlayer(cardDeck)
     }
 
     fun dealerTurn(): Boolean {
