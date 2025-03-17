@@ -3,7 +3,6 @@ package blackjack.view
 import blackjack.model.BettingTable
 import blackjack.model.Money
 import blackjack.model.PlayerBehavior
-import blackjack.model.card.Card
 import blackjack.model.card.CardShape
 import blackjack.model.card.Denomination
 import blackjack.model.participant.Dealer
@@ -54,10 +53,10 @@ class BlackjackView {
 
     fun showHands(participant: Participant) {
         if (participant is Dealer && participant.state.hand.size == 2) {
-            println("${participant.name}: ${showCards(participant.state.hand.cards)[0]}")
+            println("${participant.name}: ${showCards(participant)[0]}")
             return
         }
-        println("${participant.name}: ${showCards(participant.state.hand.cards).joinToString()}")
+        println("${participant.name}: ${showCards(participant).joinToString()}")
     }
 
     fun showIsGetDealerCards() {
@@ -68,9 +67,9 @@ class BlackjackView {
         dealer: Dealer,
         players: Players,
     ) {
-        println("\n${dealer.name}: ${showCards(dealer.state.hand.cards).joinToString()} - 결과: ${dealer.state.hand.score()}")
+        println("\n${dealer.name}: ${showCards(dealer).joinToString()} - 결과: ${dealer.state.hand.score()}")
         players.value.forEach { player ->
-            println("${player.name}: ${showCards(player.state.hand.cards).joinToString()} - 결과: ${player.state.hand.score()}")
+            println("${player.name}: ${showCards(player).joinToString()} - 결과: ${player.state.hand.score()}")
         }
     }
 
@@ -88,8 +87,10 @@ class BlackjackView {
         }
     }
 
-    private fun showCards(cards: List<Card>): List<String> =
-        cards.map { card -> showDenomination(card.denomination) + showShapeName(card.shape) }
+    private fun showCards(participant: Participant): List<String> {
+        val cards = participant.state.hand.cards
+        return cards.map { card -> showDenomination(card.denomination) + showShapeName(card.shape) }
+    }
 
     private fun showDenomination(denomination: Denomination): String =
         when (denomination) {
