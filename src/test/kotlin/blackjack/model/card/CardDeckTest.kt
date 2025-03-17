@@ -12,4 +12,14 @@ class CardDeckTest {
 
         assertThat(card1 != card2).isTrue()
     }
+
+    @Test
+    fun `카드 덱의 카드는 52장이다`() {
+        val cardDeck = CardDeck.create()
+        val actual = cardDeck.size
+
+        val expected = 52
+
+        assertThat(actual).isEqualTo(expected)
+    }
 }

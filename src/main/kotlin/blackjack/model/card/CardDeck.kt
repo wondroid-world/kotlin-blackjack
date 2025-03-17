@@ -5,6 +5,8 @@ class CardDeck private constructor(
 ) {
     private var index = 0
 
+    val size = trumpCard.size
+
     fun pickCard(): Card = trumpCard[index++]
 
     companion object {
