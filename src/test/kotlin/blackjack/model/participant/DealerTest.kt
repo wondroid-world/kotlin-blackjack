@@ -49,7 +49,7 @@ class DealerTest {
     fun `상태를 업데이트 할수 있다`() {
         val dealer = Dealer()
         val card = Card(CardShape.HEART, Denomination.NINE)
-        dealer.updateState(card)
+        dealer.receiveCard(card)
 
         val actual = dealer.state
 
@@ -60,7 +60,7 @@ class DealerTest {
     fun `상태를 Finish로 업데이트 할수 있다`() {
         val dealer = Dealer()
         val card = Card(CardShape.HEART, Denomination.NINE)
-        dealer.updateState(card)
+        dealer.receiveCard(card)
         dealer.stop()
 
         val actual = dealer.state

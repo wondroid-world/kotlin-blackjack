@@ -11,11 +11,11 @@ abstract class Participant(
     var state: State = state
         private set
 
-    fun updateState(card: Card) {
-        this.state = state.draw(card)
+    fun receiveCard(card: Card) {
+        state = this.state.draw(card)
     }
 
     fun stop() {
-        state = state.stop()
+        state = this.state.stop()
     }
 }

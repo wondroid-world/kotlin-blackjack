@@ -18,20 +18,20 @@ class BlackjackGame(
     }
 
     private fun giveCard(cardDeck: CardDeck) {
-        dealer.updateState(cardDeck.pickCard())
+        dealer.receiveCard(cardDeck.pickCard())
         players.giveCardForPlayer(cardDeck)
     }
 
     fun dealerTurn(): Boolean {
         while (dealer.canDraw()) {
-            dealer.updateState(cardDeck.pickCard())
+            dealer.receiveCard(cardDeck.pickCard())
             return true
         }
         return false
     }
 
     fun playerTurn(player: Player) {
-        player.updateState(cardDeck.pickCard())
+        player.receiveCard(cardDeck.pickCard())
     }
 
     companion object {

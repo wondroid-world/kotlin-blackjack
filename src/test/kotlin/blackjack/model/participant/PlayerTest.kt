@@ -27,7 +27,7 @@ class PlayerTest {
     fun `상태를 업데이트 할수 있다`() {
         val player = Player("모찌")
         val card = Card(CardShape.HEART, Denomination.NINE)
-        player.updateState(card)
+        player.receiveCard(card)
 
         val actual = player.state
 
@@ -38,7 +38,7 @@ class PlayerTest {
     fun `상태를 Finish로 업데이트 할수 있다`() {
         val player = Player("모찌")
         val card = Card(CardShape.HEART, Denomination.NINE)
-        player.updateState(card)
+        player.receiveCard(card)
         player.stop()
 
         val actual = player.state

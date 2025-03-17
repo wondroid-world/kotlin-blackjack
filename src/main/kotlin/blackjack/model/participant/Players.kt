@@ -11,7 +11,7 @@ class Players(
 
     fun giveCardForPlayer(cardDeck: CardDeck) {
         value.forEach { player ->
-            player.updateState(cardDeck.pickCard())
+            player.receiveCard(cardDeck.pickCard())
         }
     }
 
