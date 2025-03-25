@@ -7,7 +7,7 @@ import blackjack.model.card.Hand
 interface State {
     val hand: Hand
 
-    fun profit(money: Money): Money
+    fun expectedProfit(money: Money): Money
 
     fun profit(): Float
 

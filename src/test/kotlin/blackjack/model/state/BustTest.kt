@@ -25,7 +25,7 @@ class BustTest {
             )
         val bust = Bust(hand)
 
-        val actual = bust.profit(bettingAmount)
+        val actual = bust.expectedProfit(bettingAmount)
 
         Assertions.assertThat(actual).isEqualTo(expected)
     }

@@ -19,7 +19,7 @@ class BlackjackTest {
         val hand = Hand(Card(CardShape.HEART, Denomination.ACE), Card(CardShape.SPADE, Denomination.TEN))
         val blackjack = Blackjack(hand)
 
-        val actual = blackjack.profit(bettingAmount)
+        val actual = blackjack.expectedProfit(bettingAmount)
 
         Assertions.assertThat(actual).isEqualTo(expected)
     }

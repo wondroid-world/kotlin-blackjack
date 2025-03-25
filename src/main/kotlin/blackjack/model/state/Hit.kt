@@ -7,7 +7,7 @@ import blackjack.model.card.Hand
 class Hit(
     override val hand: Hand,
 ) : State {
-    override fun profit(money: Money): Money = throw IllegalStateException("게임이 끝나야지 수익률을 구할 수 있습니다.")
+    override fun expectedProfit(money: Money): Money = throw IllegalStateException("게임이 끝나야지 수익률을 구할 수 있습니다.")
 
     override fun profit(): Float = throw IllegalStateException("게임이 끝나야지 수익률을 구할 수 있습니다.")
 

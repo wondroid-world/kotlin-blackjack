@@ -9,7 +9,7 @@ abstract class Finish(
 ) : State {
     abstract val profitRate: Float
 
-    override fun profit(money: Money): Money = money * profitRate
+    override fun expectedProfit(money: Money): Money = money * profitRate
 
     override fun profit(): Float = profitRate
 

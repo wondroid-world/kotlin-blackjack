@@ -19,7 +19,7 @@ class StayTest {
         val hand = Hand(Card(CardShape.HEART, Denomination.ACE), Card(CardShape.SPADE, Denomination.ACE))
         val stay = Stay(hand)
 
-        val actual = stay.profit(bettingAmount)
+        val actual = stay.expectedProfit(bettingAmount)
 
         Assertions.assertThat(actual).isEqualTo(expected)
     }
