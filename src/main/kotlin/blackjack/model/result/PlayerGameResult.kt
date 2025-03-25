@@ -11,7 +11,7 @@ class PlayerGameResult(
     private val dealer: Dealer,
     private val player: Player,
 ) {
-    fun getResult(): Float {
+    fun playerProfitRate(): Float {
         val dealerState = dealer.state
         val playerState = player.state
 

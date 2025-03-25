@@ -31,7 +31,7 @@ class BlackjackController(
         val profitRates = mutableListOf<Float>()
         players.value.forEach { player ->
             val playerGameResult = PlayerGameResult(dealer, player)
-            val profitRate = playerGameResult.getResult()
+            val profitRate = playerGameResult.playerProfitRate()
             profitRates.add(profitRate)
         }
         return profitRates
